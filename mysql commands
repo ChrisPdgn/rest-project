@@ -1,0 +1,95 @@
+
+**ΧΡΗΣΤΗΣ**
+
+CREATE TABLE IF NOT EXISTS `user` (
+ `username` varchar(50) NOT NULL,
+ `password` varchar(100) NOT NULL,
+ `enabled` tinyint(1) NOT NULL,
+ PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΡΟΛΟΣ**
+
+CREATE TABLE IF NOT EXISTS `authorities` (
+ `username` varchar(50) NOT NULL,
+ `authority` varchar(50) NOT NULL,
+ UNIQUE KEY `ix_auth_username` (`username`,`authority`),
+ CONSTRAINT `fk_authorities_users` FOREIGN KEY (`username`) REFERENCES `user` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΦΟΙΤΗΤΗΣ**
+
+create table student (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null,degree_title varchar(50) default null,degree_grade float default null,preference varchar(255) default null,applications varchar(255) default null,recommendation varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΚΑΘΗΓΗΤΗΣ**
+
+create table instructor (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null, field varchar(100) not null, applications varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΓΡΑΜΜΑΤΕΙΑ**
+
+create table secretary (username varchar(50) not null primary key, app_pending varchar(255) default null, app_complete varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΔΙΑΧΕΙΡΙΣΤΗΣ NOT YET**
+
+
+**ΑΙΤΗΣΗ**
+
+create table application (id int not null auto_increment, state int default null, committee varchar(255) default null, criteria boolean default null, ranking int default null, primary key(id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΜΕΤΑΠΤΥΧΙΑΚΟ**
+
+create table master (id int not null auto_increment, title varchar(255) default null, context varchar(255) default null, criteria varchar(255) default null, field varchar(100) default null, primary key(id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+**ΠΙΝΑΚΑΣ ΓΙΑ ΤΗ ΣΧΕΣΗ ManyToMany (ΚΑΘΗΓΗΤΗΣ & ΑΙΤΗΣΗ)**
+CREATE TABLE `app_instr` (
+`app_id` int NOT NULL,
+`instr_id` varchar(50) NOT NULL,
+
+PRIMARY KEY (`app_id`,`instr_id`),
+
+KEY `FK_INSTR_idx` (`instr_id`),
+
+CONSTRAINT `FK_APP` FOREIGN KEY (`app_id`)
+REFERENCES `application` (`id`)
+ON DELETE NO ACTION ON UPDATE NO ACTION,
+
+CONSTRAINT `FK_INSTR` FOREIGN KEY (`instr_id`)
+REFERENCES `instructor` (`username`)
+ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
