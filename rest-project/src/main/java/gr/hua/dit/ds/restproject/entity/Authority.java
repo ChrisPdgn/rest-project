@@ -1,35 +1,18 @@
 package gr.hua.dit.ds.restproject.entity;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "authorities")
-public class Authority {
-
-	@Id
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
-	private User user;
+public class Authority extends User{
 	
 	@Column(name = "authority")
 	private String authority;
 	
 	public Authority() {
 		
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getAuthority() {
@@ -42,7 +25,7 @@ public class Authority {
 
 	@Override
 	public String toString() {
-		return "Authority [user=" + user + ", authority=" + authority + "]";
+		return "Authority [authority=" + authority + "]";
 	}
 	
 		

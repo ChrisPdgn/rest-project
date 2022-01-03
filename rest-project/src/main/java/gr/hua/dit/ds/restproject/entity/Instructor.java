@@ -7,21 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "instructor")
-public class Instructor {
-
-	@Id
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
-	private User user;
+public class Instructor extends User{
 	
 	@Column(name = "firstname")
 	private String firstname;
@@ -47,20 +40,11 @@ public class Instructor {
 		
 	}
 
-	public Instructor(User user, String firstname, String lastname, String email, String field) {
-		this.user = user;
+	public Instructor(String firstname, String lastname, String email, String field) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.field = field;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getFirstname() {
@@ -105,7 +89,7 @@ public class Instructor {
 
 	@Override
 	public String toString() {
-		return "Instructor [user=" + user + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+		return "Instructor [firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", field=" + field + ", applications=" + applications + "]";
 	}
 	

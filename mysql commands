@@ -21,23 +21,23 @@ CREATE TABLE IF NOT EXISTS `authorities` (
 
 **ΦΟΙΤΗΤΗΣ**
 
-create table student (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null,degree_title varchar(50) default null,degree_grade float default null,preference varchar(255) default null,applications varchar(255) default null,recommendation varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table student (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null,degree_title varchar(50) default null,degree_grade float default null,preference varchar(255) default null,recommendation varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-svinw to applications
+svinw to applications = done
 
 
 **ΚΑΘΗΓΗΤΗΣ**
 
-create table instructor (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null, field varchar(100) not null, applications varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table instructor (username varchar(50) not null primary key,firstname varchar(50) not null,lastname varchar(50) not null,email varchar(50) not null, field varchar(100) not null,foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-me to manytomany neo pinaka prepei na diagrafthei to column applications
+me to manytomany neo pinaka prepei na diagrafthei to column applications = done
 
 
 **ΓΡΑΜΜΑΤΕΙΑ**
 
 create table secretary (username varchar(50) not null primary key, app_pending varchar(255) default null, app_complete varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-kanonika ta diagrafw ola
+kanonika ta diagrafw ola?????
 
 
 **ΔΙΑΧΕΙΡΙΣΤΗΣ NOT YET**
@@ -45,11 +45,11 @@ kanonika ta diagrafw ola
 
 **ΑΙΤΗΣΗ**
 
-create table application (id int not null auto_increment, state int default null, committee varchar(255) default null, criteria boolean default null, ranking int default null, primary key(id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
+create table application (id int not null auto_increment, state int default null, criteria boolean default null, ranking int default null, primary key(id))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 alter table application add master int default null;
 
-me to manytomany neo pinaka prepei na diagrafthei to column committe
+me to manytomany neo pinaka prepei na diagrafthei to column committe = done
 
 
 **ΜΕΤΑΠΤΥΧΙΑΚΟ**
@@ -77,8 +77,16 @@ ON DELETE NO ACTION ON UPDATE NO ACTION
 
 
 
+INSERT INTO `user` (`username`, `password`, `enabled`) VALUES
+   ('chris', 'test1', 1),
+   ('root', 'test2', 1);
 
 
+INSERT INTO `authorities` (`username`, `authority`) VALUES
+   ('root', 'ROLE_ADMIN'),
+   ('chris', 'ROLE_USER');
+   
+insert into student values ('chris', 'christina', 'pap', 'test@hua.gr', 'pliroforiki', 8.6, 'cloud', 'test'); 
 
 
 

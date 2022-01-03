@@ -6,20 +6,12 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "secretary")
-public class Secretary {
-	
-	@Id
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
-	private User user;
+public class Secretary extends User{
 	
 	//one directional 
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.REFRESH)
@@ -33,18 +25,9 @@ public class Secretary {
 		
 	}
 
-	public Secretary(User user, List<Application> app_pending, List<Application> app_complete) {
-		this.user = user;
+	public Secretary(List<Application> app_pending, List<Application> app_complete) {
 		this.app_pending = app_pending;
 		this.app_complete = app_complete;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public List<Application> getApp_pending() {
@@ -65,7 +48,7 @@ public class Secretary {
 
 	@Override
 	public String toString() {
-		return "Secretary [user=" + user + ", app_pending=" + app_pending + ", app_complete=" + app_complete + "]";
+		return "Secretary [app_pending=" + app_pending + ", app_complete=" + app_complete + "]";
 	}
 	
 	//convenience method to add pending application

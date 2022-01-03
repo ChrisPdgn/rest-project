@@ -7,20 +7,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "student")
-public class Student {
-	
-	@Id
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "username")
-	private User user;
+public class Student extends User{
 	
 	@Column(name = "firstname")
 	private String firstname;
@@ -51,9 +43,8 @@ public class Student {
 		
 	}
 
-	public Student(User user, String firstname, String lastname, String email, String degreeTitle, float degreeGrade,
+	public Student(String firstname, String lastname, String email, String degreeTitle, float degreeGrade,
 			String preference, String recommendation) {
-		this.user = user;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
@@ -61,14 +52,6 @@ public class Student {
 		this.degreeGrade = degreeGrade;
 		this.preference = preference;
 		this.recommendation = recommendation;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public String getFirstname() {
@@ -137,7 +120,7 @@ public class Student {
 
 	@Override
 	public String toString() {
-		return "Student [user=" + user + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+		return "Student [firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
 				+ ", degreeTitle=" + degreeTitle + ", degreeGrade=" + degreeGrade + ", preference=" + preference
 				+ ", recommendation=" + recommendation + ", applications=" + applications + "]";
 	}
