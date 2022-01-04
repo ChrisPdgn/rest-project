@@ -27,6 +27,10 @@ public class Master {
 	
 	@Column(name = "field")
 	private String field;
+	
+	public Master() {
+		
+	}
 
 	public Master(String title, String context, String criteria, String field) {
 		this.title = title;

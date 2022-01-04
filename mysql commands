@@ -37,6 +37,10 @@ me to manytomany neo pinaka prepei na diagrafthei to column applications = done
 
 create table secretary (username varchar(50) not null primary key, app_pending varchar(255) default null, app_complete varchar(255) default null, foreign key (username) references user(username))ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+alter table secretary drop column app_pending;
+alter table secretary drop column app_complete;
+
+
 kanonika ta diagrafw ola?????
 
 
@@ -80,16 +84,53 @@ ON DELETE NO ACTION ON UPDATE NO ACTION
 INSERT INTO `user` (`username`, `password`, `enabled`) VALUES
    ('chris', 'test1', 1),
    ('root', 'test2', 1);
+   
+INSERT INTO `user` (`username`, `password`, `enabled`) VALUES
+   ('spyros', 'password', 1),
+   ('jim', 'password', 1),
+   ('viol', 'password', 1),
+   ('demy', 'password', 1);
+   
+   
 
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
    ('root', 'ROLE_ADMIN'),
    ('chris', 'ROLE_USER');
    
+ INSERT INTO `authorities` (`username`, `authority`) VALUES
+   ('spyros', 'ROLE_USER'),
+   ('jim', 'ROLE_USER'),
+   ('viol', 'ROLE_USER'),
+   ('demy', 'ROLE_USER');
+   
+   
+   
+   
 insert into student values ('chris', 'christina', 'pap', 'test@hua.gr', 'pliroforiki', 8.6, 'cloud', 'test'); 
 
+insert into student values ('spyros', 'spyridon', 'kar', 'kar@hua.gr', 'pliroforiki', 9, 'teaching', 'test'); 
+
+insert into student values ('jim', 'dimitris', 'geo', 'geo@hua.gr', 'pliroforiki', 10, 'networks', 'test'); 
 
 
+
+
+insert into master values (null, 'oikonomika', 'metaptuxiako sta oikonomika mpla mpla', 'vathmos panw apo 7', 'oikonomikes epistimes');
+
+
+
+insert into application values(null, 1, 1, 12, 1);
+
+
+insert into instructor values('viol','john', 'violos', 'viol@hua.gr', 'cloud');
+
+
+insert into secretary values('demy');
+
+
+**PASSWORD**
+update user set password='$2a$12$mLFcl.fj9QNvdQCO8.Pliet8I1TzeYNZD9gCnRRcXGpgTn6xb4Fgm';
 
 
 
