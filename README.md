@@ -25,5 +25,6 @@ spring.datasource.username = YOUR_USERNAME
 spring.datasource.password = YOUR_PASSWORD
 ```
   
+# Extras  
 Default server port: 9090  
 Swagger API Documentation link: http://localhost:9090/swagger-ui/index.html
