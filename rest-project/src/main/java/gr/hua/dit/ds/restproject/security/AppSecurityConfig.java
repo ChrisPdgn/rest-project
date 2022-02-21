@@ -5,7 +5,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,7 +34,12 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().cors()
-		.and().authorizeRequests().antMatchers(HttpMethod.DELETE,"/**").permitAll() //TO DO: add antMatchers for urls
+		.and().authorizeRequests()
+//		.antMatchers("/swagger-ui/index.html").permitAll()
+//		.antMatchers("/**").hasRole("ADMIN")
+//		.antMatchers("/application/**", "/master/**", "/student/**", "/instructor/**").hasRole("SEC")
+//		.antMatchers("/instructor/**").hasRole("INSTR")
+//		.antMatchers("/master/**", "/student/**").hasRole("STUDENT")
 		.anyRequest().authenticated().and()
 		.formLogin()
 		.loginProcessingUrl("/authUser").permitAll().and()
