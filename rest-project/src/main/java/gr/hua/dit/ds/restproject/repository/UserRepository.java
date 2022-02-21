@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import gr.hua.dit.ds.restproject.entity.User;
 
-@RepositoryRestResource(path="user")
+@RepositoryRestResource(path="user", exported = true)
 public interface UserRepository extends JpaRepository<User, String>{
 
 }

@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import gr.hua.dit.ds.restproject.entity.Authority;
 
-@RepositoryRestResource(path="authorities")
+@RepositoryRestResource(path="authorities", exported = true)
 public interface AuthorityRepository extends JpaRepository<Authority, String>{
 
 }

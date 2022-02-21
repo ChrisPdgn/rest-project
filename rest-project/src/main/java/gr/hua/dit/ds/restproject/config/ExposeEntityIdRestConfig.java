@@ -3,6 +3,7 @@ package gr.hua.dit.ds.restproject.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
+import org.springframework.data.rest.core.mapping.RepositoryDetectionStrategy.RepositoryDetectionStrategies;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
@@ -24,6 +25,7 @@ public class ExposeEntityIdRestConfig {
 
 			@Override
 			public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {
+				//config.setRepositoryDetectionStrategy(RepositoryDetectionStrategies.ALL);
 				config.exposeIdsFor(User.class);
 				config.exposeIdsFor(Application.class);
 				config.exposeIdsFor(Authority.class);

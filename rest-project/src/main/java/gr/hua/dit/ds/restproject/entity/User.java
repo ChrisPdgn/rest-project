@@ -46,6 +46,7 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+		//System.out.println((passwordEncoder.encode(password)).toString());
 	}
 
 	public boolean isEnabled() {

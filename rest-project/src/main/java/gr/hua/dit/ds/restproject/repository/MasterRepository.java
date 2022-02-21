@@ -5,7 +5,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import gr.hua.dit.ds.restproject.entity.Master;
 
-@RepositoryRestResource(path="master")
+@RepositoryRestResource(path="master", exported = true)
 public interface MasterRepository extends JpaRepository<Master, Integer>{
 
 }
