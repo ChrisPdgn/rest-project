@@ -69,13 +69,13 @@ INSERT INTO `user` (`username`, `password`, `enabled`) VALUES
 
 INSERT INTO `authorities` (`username`, `authority`) VALUES
    ('root', 'ROLE_ADMIN'),
-   ('chris', 'ROLE_STUDENT');
+   ('chris', 'ROLE_USER');
    
  INSERT INTO `authorities` (`username`, `authority`) VALUES
-   ('spyros', 'ROLE_STUDENT'),
-   ('jim', 'ROLE_STUDENT'),
-   ('john', 'ROLE_INSTR'),
-   ('demy', 'ROLE_SEC');
+   ('spyros', 'ROLE_USER'),
+   ('jim', 'ROLE_USER'),
+   ('john', 'ROLE_USER'),
+   ('demy', 'ROLE_USER');
    
    
    
